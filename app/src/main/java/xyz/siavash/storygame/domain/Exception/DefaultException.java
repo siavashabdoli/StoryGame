@@ -4,7 +4,7 @@ package xyz.siavash.storygame.domain.Exception;
  * Created by Siavash on 2/27/18.
  */
 
-public class DefaultException implements ErrorBundle {
+public class DefaultException extends Exception implements ErrorBundle {
 
   private final Exception exception;
 
