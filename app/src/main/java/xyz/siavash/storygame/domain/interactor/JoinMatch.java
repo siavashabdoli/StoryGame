@@ -24,7 +24,8 @@ public class JoinMatch extends UseCase<Boolean,JoinMatch.Params> {
 
   @Override
   Observable<Boolean> getResultObservable(Params params, Scheduler backgroundScheduler) {
-    return repository.joinMatch(params.matchId);
+    return repository.joinMatch(params.matchId)
+            .observeOn(backgroundScheduler);
   }
 
   public static final class Params {

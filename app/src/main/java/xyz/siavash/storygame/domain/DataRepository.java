@@ -6,6 +6,7 @@ import rx.Observable;
 import xyz.siavash.storygame.domain.entity.Card;
 import xyz.siavash.storygame.domain.entity.ImageCard;
 import xyz.siavash.storygame.domain.entity.MatchEntity;
+import xyz.siavash.storygame.domain.entity.RoundEntity;
 import xyz.siavash.storygame.domain.entity.UserEntity;
 
 /**
@@ -27,4 +28,8 @@ public interface DataRepository {
   Observable<Boolean> joinMatch(int matchId);
 
   Observable<MatchEntity<Card>> subscribeToMatchStart();
+
+  Observable<RoundEntity<Card>> getCurrentRound(int matchId);
+
+  Observable<List<Card>> getMyCards();
 }

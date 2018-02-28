@@ -25,7 +25,8 @@ public class GetUserListOfMatch extends UseCase<UserEntity,GetUserListOfMatch.Pa
 
   @Override
   Observable<UserEntity> getResultObservable(Params params, Scheduler backgroundScheduler) {
-    return repository.getUserList(params.matchId);
+    return repository.getUserList(params.matchId)
+            .observeOn(backgroundScheduler);
   }
 
   public static final class Params {

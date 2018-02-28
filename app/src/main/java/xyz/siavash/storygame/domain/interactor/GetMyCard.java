@@ -6,7 +6,6 @@ import rx.Observable;
 import rx.Scheduler;
 import xyz.siavash.storygame.domain.DataRepository;
 import xyz.siavash.storygame.domain.entity.Card;
-import xyz.siavash.storygame.domain.entity.MatchEntity;
 import xyz.siavash.storygame.domain.executor.BackgroundExecutionThread;
 import xyz.siavash.storygame.domain.executor.RepositoryExecutionThread;
 
@@ -14,17 +13,18 @@ import xyz.siavash.storygame.domain.executor.RepositoryExecutionThread;
  * Created by Siavash on 2/28/18.
  */
 
-public class GetMatches extends UseCase<List<MatchEntity<Card>>, Void> {
-  private final DataRepository dataRepository;
+public class GetMyCard extends UseCase<List<Card>,Void> {
 
-  public GetMatches(DataRepository dataRepository, RepositoryExecutionThread repositoryExecutionThread, BackgroundExecutionThread backgroundExecutionThread) {
+  private final DataRepository repository;
+
+  public GetMyCard(DataRepository repository, RepositoryExecutionThread repositoryExecutionThread, BackgroundExecutionThread backgroundExecutionThread) {
     super(repositoryExecutionThread, backgroundExecutionThread);
-    this.dataRepository = dataRepository;
+    this.repository = repository;
   }
 
   @Override
-  Observable<List<MatchEntity<Card>>> getResultObservable(Void aVoid, Scheduler backgroundScheduler) {
-    return dataRepository.getAllMatches()
+  Observable<List<Card>> getResultObservable(Void aVoid, Scheduler backgroundScheduler) {
+    return repository.getMyCards()
             .observeOn(backgroundScheduler);
   }
 }

@@ -9,6 +9,7 @@ import xyz.siavash.storygame.domain.DataRepository;
 import xyz.siavash.storygame.domain.entity.Card;
 import xyz.siavash.storygame.domain.entity.ImageCard;
 import xyz.siavash.storygame.domain.entity.MatchEntity;
+import xyz.siavash.storygame.domain.entity.RoundEntity;
 import xyz.siavash.storygame.domain.entity.UserEntity;
 import xyz.siavash.storygame.repository.network.GameApiInterface;
 
@@ -51,6 +52,16 @@ public class DataProvider implements DataRepository {
 
   @Override
   public Observable<MatchEntity<Card>> subscribeToMatchStart() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<RoundEntity<Card>> getCurrentRound(int matchId) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<List<Card>> getMyCards() {
     throw new UnsupportedOperationException();
   }
 }

@@ -33,6 +33,7 @@ public class StartMatchForImageCard extends UseCase<MatchEntity<ImageCard>,Void>
   @Override
   Observable<MatchEntity<ImageCard>> getResultObservable(Void aVoid, Scheduler backgroundScheduler) {
     return dataRepository.isMatchRunning()
+            .observeOn(backgroundScheduler)
     .flatMap(new Func1<Boolean, Observable<MatchEntity<ImageCard>>>() {
       @Override
       public Observable<MatchEntity<ImageCard>> call(Boolean isMatchRunning) {
