@@ -1,5 +1,7 @@
 package xyz.siavash.storygame.infrastructure;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -19,7 +21,6 @@ public class NotificationService extends FirebaseMessagingService {
     // ...
 
     // TODO(developer): Handle FCM messages here.
-    Toast.makeText(this.getApplicationContext(),"Notification Received",Toast.LENGTH_LONG).show();
     // Not getting messages here? See why this may be: https://goo.gl/39bRNJ
     Log.d(TAG, "From: " + remoteMessage.getFrom());
 
@@ -42,6 +43,12 @@ public class NotificationService extends FirebaseMessagingService {
       Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
     }
 
+    Handler handler = new Handler(Looper.getMainLooper());
+    handler.post(new Runnable() {
+      public void run() {
+        Toast.makeText(NotificationService.this.getApplicationContext(),"Message recive",Toast.LENGTH_SHORT).show();
+      }
+    });
     // Also if you intend on generating your own notifications as a result of a received FCM
     // message, here is where that should be initiated. See sendNotification method below.
   }
