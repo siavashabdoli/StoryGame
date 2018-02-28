@@ -64,4 +64,29 @@ public class DataProvider implements DataRepository {
   public Observable<List<Card>> getMyCards() {
     throw new UnsupportedOperationException();
   }
+
+  @Override
+  public Observable<MatchEntity<Card>> getMatchResult(int matchId) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<MatchEntity<Card>> getCurrentMatch() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<Boolean> voteCard(int matchId, int cardId) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<Boolean> playCardByOthers(int matchId, int cardId) {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public Observable<Boolean> playCardByStoryTeller(int matchId, int cardId) {
+    throw new UnsupportedOperationException();
+  }
 }
