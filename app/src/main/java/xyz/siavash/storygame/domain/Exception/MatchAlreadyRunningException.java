@@ -1,14 +1,10 @@
 package xyz.siavash.storygame.domain.Exception;
 
 /**
- * Created by Siavash on 2/27/18.
+ * Created by Siavash on 2/28/18.
  */
 
-public class DefaultException extends Exception implements ErrorBundle {
-
-  public DefaultException() {
-  }
-
+public class MatchAlreadyRunningException extends Exception implements ErrorBundle {
   @Override
   public Exception getException() {
     return this;
@@ -16,7 +12,7 @@ public class DefaultException extends Exception implements ErrorBundle {
 
   @Override
   public String getErrorMessage() {
-    return "";
+    return "Game is Already Running";
   }
 
   @Override

@@ -7,6 +7,7 @@ import java.util.Collection;
  */
 
 public class MatchEntity<T extends Card> {
+  private int matchId;
   private Collection<RoundEntity<T>> rounds;
   private Collection<UserEntity> users;
 
@@ -16,5 +17,9 @@ public class MatchEntity<T extends Card> {
 
   public Collection<UserEntity> getUsers() {
     return users;
+  }
+
+  public int getMatchId() {
+    return matchId;
   }
 }

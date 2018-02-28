@@ -34,7 +34,7 @@ public abstract class UseCase<Result, Params> {
                 if (throwable instanceof ErrorBundle) {
                   throw Exceptions.propagate(throwable);
                 } else {
-                  throw Exceptions.propagate(new DefaultException(new Exception()));
+                  throw Exceptions.propagate(new DefaultException());
                 }
               }
             });
