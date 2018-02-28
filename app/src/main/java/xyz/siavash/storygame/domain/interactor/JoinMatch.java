@@ -3,7 +3,6 @@ package xyz.siavash.storygame.domain.interactor;
 import javax.inject.Inject;
 
 import rx.Observable;
-import rx.Scheduler;
 import xyz.siavash.storygame.domain.DataRepository;
 import xyz.siavash.storygame.domain.executor.BackgroundExecutionThread;
 import xyz.siavash.storygame.domain.executor.RepositoryExecutionThread;
@@ -12,7 +11,7 @@ import xyz.siavash.storygame.domain.executor.RepositoryExecutionThread;
  * Created by Siavash on 2/28/18.
  */
 
-public class JoinMatch extends UseCase<Boolean,JoinMatch.Params> {
+public class JoinMatch extends UseCase<Boolean, JoinMatch.Params> {
 
   private final DataRepository repository;
 
@@ -23,9 +22,9 @@ public class JoinMatch extends UseCase<Boolean,JoinMatch.Params> {
   }
 
   @Override
-  Observable<Boolean> getResultObservable(Params params, Scheduler backgroundScheduler) {
+  Observable<Boolean> getResultObservable(Params params) {
     return repository.joinMatch(params.matchId)
-            .observeOn(backgroundScheduler);
+            .observeOn(getBackgroundExecutionThread());
   }
 
   public static final class Params {

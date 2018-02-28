@@ -22,10 +22,10 @@ public abstract class UseCase<Result, Params> {
     this.backgroundExecutionThread = backgroundExecutionThread;
   }
 
-  abstract Observable<Result> getResultObservable(Params params, Scheduler backgroundScheduler);
+  abstract Observable<Result> getResultObservable(Params params);
 
   public Observable<Result> execute(Params params) {
-    return getResultObservable(params, backgroundExecutionThread.getScheduler())
+    return getResultObservable(params)
             .subscribeOn(repositoryExecutionThread.getScheduler())
             .doOnError(new Action1<Throwable>() {
               @Override
@@ -38,5 +38,13 @@ public abstract class UseCase<Result, Params> {
                 }
               }
             });
+  }
+
+  public Scheduler getRepositoryExecutionThread() {
+    return repositoryExecutionThread.getScheduler();
+  }
+
+  public Scheduler getBackgroundExecutionThread() {
+    return backgroundExecutionThread.getScheduler();
   }
 }

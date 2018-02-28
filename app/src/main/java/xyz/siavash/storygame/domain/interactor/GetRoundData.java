@@ -1,7 +1,8 @@
 package xyz.siavash.storygame.domain.interactor;
 
+import javax.inject.Inject;
+
 import rx.Observable;
-import rx.Scheduler;
 import xyz.siavash.storygame.domain.DataRepository;
 import xyz.siavash.storygame.domain.entity.Card;
 import xyz.siavash.storygame.domain.entity.RoundEntity;
@@ -16,15 +17,16 @@ public class GetRoundData extends UseCase<RoundEntity<Card>, GetRoundData.Params
 
   private final DataRepository dataRepository;
 
+  @Inject
   public GetRoundData(DataRepository dataRepository, RepositoryExecutionThread repositoryExecutionThread, BackgroundExecutionThread backgroundExecutionThread) {
     super(repositoryExecutionThread, backgroundExecutionThread);
     this.dataRepository = dataRepository;
   }
 
   @Override
-  Observable<RoundEntity<Card>> getResultObservable(Params params, Scheduler backgroundScheduler) {
+  Observable<RoundEntity<Card>> getResultObservable(Params params) {
     return dataRepository.getCurrentRound(params.matchId)
-            .observeOn(backgroundScheduler);
+            .observeOn(getBackgroundExecutionThread());
   }
 
   public static final class Params {

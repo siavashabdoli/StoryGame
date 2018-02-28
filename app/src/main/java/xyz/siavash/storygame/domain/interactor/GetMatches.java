@@ -2,8 +2,9 @@ package xyz.siavash.storygame.domain.interactor;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import rx.Observable;
-import rx.Scheduler;
 import xyz.siavash.storygame.domain.DataRepository;
 import xyz.siavash.storygame.domain.entity.Card;
 import xyz.siavash.storygame.domain.entity.MatchEntity;
@@ -17,14 +18,15 @@ import xyz.siavash.storygame.domain.executor.RepositoryExecutionThread;
 public class GetMatches extends UseCase<List<MatchEntity<Card>>, Void> {
   private final DataRepository dataRepository;
 
+  @Inject
   public GetMatches(DataRepository dataRepository, RepositoryExecutionThread repositoryExecutionThread, BackgroundExecutionThread backgroundExecutionThread) {
     super(repositoryExecutionThread, backgroundExecutionThread);
     this.dataRepository = dataRepository;
   }
 
   @Override
-  Observable<List<MatchEntity<Card>>> getResultObservable(Void aVoid, Scheduler backgroundScheduler) {
+  Observable<List<MatchEntity<Card>>> getResultObservable(Void aVoid) {
     return dataRepository.getAllMatches()
-            .observeOn(backgroundScheduler);
+            .observeOn(getBackgroundExecutionThread());
   }
 }
