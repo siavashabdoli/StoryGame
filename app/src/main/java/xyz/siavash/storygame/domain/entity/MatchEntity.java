@@ -1,6 +1,6 @@
 package xyz.siavash.storygame.domain.entity;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Created by Siavash on 2/27/18.
@@ -8,14 +8,14 @@ import java.util.Collection;
 
 public class MatchEntity<T extends Card> {
   private int matchId;
-  private Collection<RoundEntity<T>> rounds;
-  private Collection<UserEntity> users;
+  private List<RoundEntity<T>> rounds;
+  private List<UserEntity> users;
 
-  public Collection<RoundEntity<T>> getRounds() {
+  public List<RoundEntity<T>> getRounds() {
     return rounds;
   }
 
-  public Collection<UserEntity> getUsers() {
+  public List<UserEntity> getUsers() {
     return users;
   }
 

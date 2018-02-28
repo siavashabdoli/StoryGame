@@ -32,4 +32,14 @@ public interface DataRepository {
   Observable<RoundEntity<Card>> getCurrentRound(int matchId);
 
   Observable<List<Card>> getMyCards();
+
+  Observable<MatchEntity<Card>> getMatchResult(int matchId);
+
+  Observable<MatchEntity<Card>> getCurrentMatch();
+
+  Observable<Boolean> voteCard(int matchId, int cardId);
+
+  Observable<Boolean> playCardByOthers(int matchId, int cardId);
+
+  Observable<Boolean> playCardByStoryTeller(int matchId, int cardId);
 }
