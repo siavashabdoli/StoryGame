@@ -1,0 +1,33 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="xyz.siavash.storygame.presentation.feature.home.HomeFragment"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/home_create_game"
+            android:layout_width="@dimen/big_button_width"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/accent"
+            android:layout_margin="10dp"
+            android:text="@string/create_game"/>
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/home_join_game"
+            android:layout_width="@dimen/big_button_width"
+            android:layout_height="@dimen/big_button_height"
+            android:layout_gravity="center_horizontal"
+            android:background="@color/accent"
+            android:layout_margin="10dp"
+            android:text="@string/join_game"/>
+    </LinearLayout>
+
+</FrameLayout>

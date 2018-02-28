@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Story Game</string>
+    <string name="create_game">ساخت بازی</string>
+    <string name="join_game">ملحق شدن به بازی</string>
 </resources>
